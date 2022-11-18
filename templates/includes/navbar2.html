@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style-nav.css' %}">
+
+<div class="topnav">
+  {% comment %} class="active" {% endcomment %}
+  <a class="menuse" href="{% url 'todoapp:index' %}">Home</a>
+  <a class="menuse" href="#news">News</a>
+  <a class="menuse" href="#contact">Contact</a>>
+
+  <div class="topnav-right">
+      {% if request.user.is_authenticated %}
+        <h4 class="req-user">HI {{ request.user.username }}</h4>
+      <a class="menuse" href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+        <a class="menuse" href="{% url 'accounts:login' %}">Login</a>
+        <a class="menuse" href="{% url 'accounts:registration' %}">Register</a>
+    {% endif %}
+    
+  </div>
+</div>
+      
+    {% comment %} <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> {% endcomment %}
+
+    <script>
+    
+      const menuse = document.querySelector(".menuse");
+
+      document.write(menuse);
+      menuse.addEventListener('click', () => {
+        a.classList.add('topnav', 'active');
+      })
+    </script>
